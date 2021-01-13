@@ -3,10 +3,11 @@ html{
 }
 
 body{
-    background: url('/media/shoes_varities.jpg') no-repeat;
+    background: url('/media/shoes_varities.jpg') no-repeat center center fixed;
     background-size: cover;
     color: wheat;
     height: calc(90vh - 155px);
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .icon {
@@ -23,6 +24,31 @@ body{
 
 .main-logo-link{
     width: fit-content;
+}
+
+.shop-now-button {
+    background: crimson;
+    color: wheat;
+    min-width: 260px;
+}
+
+.btn-black {
+    background: brown;
+    color: cornsilk;
+}
+
+.shop-now-button:hover,
+.shop-now-button:active,
+.shop-now-button:focus,
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus{
+    background: darkblue;
+    color: darkorange;
+}
+
+.text-black{
+    color: black;
 }
 
 @media (min-width: 992px){
