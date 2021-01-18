@@ -75,3 +75,11 @@ body{
 .bg-black{
     background: darkblue !important;
 }
+
+.innerclap {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background: whitesmoke;
+    z-index: -1;
+}
