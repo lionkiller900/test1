@@ -5,7 +5,7 @@ html{
 body{
     background: url('/media/shoes_varities.jpg') no-repeat center center fixed;
     background-size: cover;
-    color: wheat;
+    color: darkgreen;
     height: calc(90vh - 155px);
     font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -67,6 +67,7 @@ body{
         max-width: 80%;
     }
 }
+
 
 .border-black{
     border: 1px solid black !important;
