@@ -11,8 +11,23 @@ def all_products(request):
     products = Product.objects.all()
     query = None
     categories = None
+    sort = None
+    direct = None
 
     if request.GET:
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'less_name'
+                products = products.annotate(lower_name=Lower('name'))
+
+            if 'direct' in request.GET:
+                direct = request.GET['direct']
+                if direct == 'desc':
+                    sortkey = f'-{sortkey}'
+            products = products.order_by(sortkey)
+
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(categories__name__in=categories)
@@ -27,10 +42,13 @@ def all_products(request):
             queries = Q(name__icontains=query) | Q(descriptions__icontains=query)
             products = products.filter(queries)
 
+    price_sorting = f'{sort}_{direct}'
+
     context = {
         'products': products,
         'seek_term': query,
         'present_categories': categories,
+        'price_sorting': price_sorting, 
     }
 
     return render(request, 'products/products.html', context)

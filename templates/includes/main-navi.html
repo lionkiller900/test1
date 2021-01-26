@@ -6,9 +6,19 @@
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all=products-link">
                 <a href="{% url 'frontpage' %}" class="dropdown-item">Home page</a>
-                <a href="{% url 'products' %}" class="dropdown-item">Buy Now</a>
+                <a href="{% url 'products' %}" class="dropdown-item">All Shoes</a>
                 <a href="{% url 'products' %}?category=Trainers" class="dropdown-item">Trainers</a>
                 <a href="{% url 'products' %}?category=Casual_shoes" class="dropdown-item">Casual shoes</a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="logo-font font-weight-bold nav-link text-black mr-S" href="#" id="all=products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Shoe Choice
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="all=products-link">
+                <a href="{% url 'products' %}?sort=prices&direction=asc" class="dropdown-item">Product Price</a>
+                <a href="{% url 'products' %}?sort=rating&direction=dsc" class="dropdown-item">Product ratings</a>
             </div>
         </li>
     </ul>
