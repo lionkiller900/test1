@@ -7,8 +7,8 @@
             <div class="dropdown-menu border-0" aria-labelledby="all=products-link">
                 <a href="{% url 'frontpage' %}" class="dropdown-item">Home page</a>
                 <a href="{% url 'products' %}" class="dropdown-item">Buy Now</a>
-                <a href="" class="dropdown-item">Trainers</a>
-                <a href="" class="dropdown-item">Boots</a>
+                <a href="{% url 'products' %}?category=Trainers" class="dropdown-item">Trainers</a>
+                <a href="{% url 'products' %}?category=Casual_shoes" class="dropdown-item">Casual shoes</a>
             </div>
         </li>
     </ul>
