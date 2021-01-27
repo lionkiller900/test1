@@ -84,3 +84,8 @@ body{
     background: whitesmoke;
     z-index: -1;
 }
+
+a.cat-badge > span.badge:hover {
+    background: darkslategray !important;
+    color: cornsilk !important;
+}
