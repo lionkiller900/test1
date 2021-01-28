@@ -30,10 +30,11 @@
                 <div class="row mt-1 mb-2">
                     <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
                         <div class="sort-select-wrapper w-50">
-                            <select id="sort-selector" class="custom-select-sm rounded-0 border border-{% if price_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                            <select id="sorting" class="custom-select-sm rounded-0 border border-{% if price_sorting != 'None_None' %}info{% else %}black{% endif %}">
                                 <option value="reset" {% if price_sorting == 'None_None '%}selected{% endif %}>Choose by</option>
-                                <option value="prices_asc" {% if price_sorting == 'prices_asc '%}selected{% endif %}>Price(Big to Small)</option>
-                                <option value="rating_asc" {% if price_sorting == 'rating_asc '%}selected{% endif %}>Price(Big to Small)</option>
+                                <option value="prices_asc" {% if price_sorting == 'prices_asc' %}selected{% endif %}>Price(Big to Small)</option>
+                                <option value="rating_asc" {% if price_sorting == 'rating_asc' %}selected{% endif %}>Rating(Big to Small)</option>
+                                <option value="categories_asc" {% if price_sorting == 'categories_asc' %}selected{% endif %}>Category(Big to Small)</option>
                             </select>
                         </div>
                     </div>
@@ -109,4 +110,31 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+
+{% block postloadjs %}
+    {{ block.super }}
+><script type="text/javascript">
+    $('#sorting').change(function(){
+    var selector = $(this);
+    var current_url = new URL(window.location);
+
+    var selected_val = selector.val();
+    if(selected_val |= "reset"){
+        var sort = selected_val.split("_")[0];
+        var direction = selected_val.split("_")[1];
+
+        current_url.searchParams.set("sort", sort);
+        current_url.searchParams.set("direction", direction);
+
+        window.location.replace(current_url);
+    }else{
+        current_url.searchParams.delete("sort");
+        current_url.searchParams.delete("direction");
+
+        window.location.replace(current_url);
+    }
+})
+</script>
 {% endblock %}
