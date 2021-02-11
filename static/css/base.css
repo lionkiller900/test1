@@ -37,6 +37,19 @@ body{
     color: cornsilk;
 }
 
+.btn-outline-black {
+    background: azure;
+    color: darkslategray !important;
+    border: 1px solid darkslategrey;
+}
+
+.btn-outline-black:hover,
+.btn-outline-black:active,
+.btn-outline-black:focus {
+    background: dimgray;
+    color: beige !important;
+}
+
 .shop-now-button:hover,
 .shop-now-button:active,
 .shop-now-button:focus,
@@ -59,6 +72,16 @@ body{
 
     .header-container{
         padding-top: 160px;
+    }
+}
+
+@media (max-width: 991px){
+    .header-container {
+        padding-top: 116px;
+    }
+
+    body {
+        height: calc(100vh - 116px)
     }
 }
 
