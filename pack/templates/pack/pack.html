@@ -51,13 +51,44 @@
                                         <p class="my-0">£{{ item.product.prices }}</p>
                                     </td>
                                     <td class="py-3 w-25">
-                                        <p class="my-0">{{ item.quantity }}</p>
-                                    </td>
-                                    <td class="py-3">
-                                        <p class="my-0">£{{ item.product.prices }}</p>
-                                    </td>
-                                </tr>
-                            {% endfor %}
+                                        <form class="form change-form" method="POST" action="">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="decrease-qt btn btn-sm btn-black rounded-0"
+                                            data-item_id="{{ item.item_id }}" id="decrease-qt_{{ item.item_id }}">
+                                            <span>
+                                                <i class="fas fa-minus fa-sm"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <input class="form-control form-control-sm qt_input" type="number" 
+                                        name="quantity" value="{{ item.quantity }}" min="1" max="99" 
+                                        data-item_id="{{ item.item_id }}" 
+                                        id="id_qt_{{ item.item_id }}">
+                                    <div class="input-group-prepend">
+                                        <button class="increase-qt btn btn-sm btn-black rounded-0"
+                                            data-item_id="{{ product.id }}" id="increase-qt_{{ item.item_id }}">
+                                            <span>
+                                                <i class="fas fa-plus fa-sm"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    {% if item.product.shoe_sizes %}
+                                        <input type="hidden" name="shoe-sizes" value="{{ item.size}}"
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </form>
+                        <a class="update-link text-info"><small>Change</small></a>
+                        <a class="remove-link text-danger float-right" id="remove_{{ item.item_id }}" data-size="{{ item.size }}"><small>Delete</small></a>
+                    </td>
+                    <td class="py-3">
+                        <p class="my-0">£{{ item.product.prices }}</p>
+                    </td>
+                </tr>
+                {% endfor %}
                             <tr>
                                 <td colspan="5" class="pt-4 text-right">
                                     <h6><strong>Pack Total: £{{ overall|floatformat:2 }}</strong></h6>
@@ -101,3 +132,27 @@
         </div>
     </div>
 {% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'products/additions/quantity_change.html' %}
+{% endblock %}
+
+<script type="text/javascript">
+    $('.update-link').click(function(e){
+        var form = $(this).prev('update-form');
+        form.submit();
+    })
+    $('.remove-item').click(function(e){
+        var csrftoken = "{{ csrf_token}}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var size = $(this).data('size');
+        var url = './pack/remove/${itemId}';
+        var data = {'csrfshoetoken': csrftoken, 'size':size}
+
+        $.post(url, data)
+         .done(function(){
+             location.reload();
+         })
+    })
+</script>

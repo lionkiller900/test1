@@ -85,6 +85,21 @@ body{
     }
 }
 
+.btt-button {
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.btt-button,
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
+
+
 @media (min-width: 1200px){
     .container{
         max-width: 80%;
