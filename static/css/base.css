@@ -99,6 +99,20 @@ body{
     cursor: pointer;
 }
 
+.message-container {
+    position: fixed;
+    top: 73px;
+    right: 16.2px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 3px;
+}
 
 @media (min-width: 1200px){
     .container{
