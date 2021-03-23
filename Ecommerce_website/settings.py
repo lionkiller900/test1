@@ -22,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'tqnb%0iljg-wcw3)egg+6c!up%-q*ekw*sq^u*z%=b+llj8b(d'
+SECRET_KEY = os.environ.get('SECRET_KEY','tqnb%0iljg-wcw3)egg+6c!up%-q*ekw*sq^u*z%=b+llj8b(d')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ecommerce-shoes-website.herokuapp.com']
+ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
 
 # Application definition
@@ -119,7 +119,7 @@ LOGIN_REDIRECT_URL = '/'
 # }
 
 DATABASES = {
-    'default': dj_database_url.parse('postgres://ucqdclntavjqyo:11f795306b35b5ce8aca33ec22e5864efe9812722a98c0749e7e04938f678dde@ec2-54-74-156-137.eu-west-1.compute.amazonaws.com:5432/d20vlj8sds0db4')
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 
