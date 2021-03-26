@@ -51,10 +51,11 @@ INSTALLED_APPS = [
     'products',
     'pack',
     'checkout',
+
+     #other applications
+    'storages',
 ]
 
-    #other applications
-    'storages',
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
