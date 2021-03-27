@@ -93,11 +93,13 @@ body{
     right: 10px;
 }
 
-.btt-button,
+.btt-link,
 .update-link,
 .remove-item {
     cursor: pointer;
 }
+
+/*.............................. toasts basede on bootstrap */
 
 .message-container {
     position: fixed;
@@ -113,6 +115,8 @@ body{
 .toast-capper {
     height: 3px;
 }
+
+/*..............................Queries*/
 
 @media (min-width: 1200px){
     .container{
