@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 
      #other applications
     'storages',
+    'crispy_forms',
 ]
 
 
@@ -68,6 +69,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'Ecommerce_website.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
@@ -86,6 +89,10 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'pack.contexts.pack_contents',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
@@ -171,7 +178,6 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'

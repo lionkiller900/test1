@@ -1,12 +1,12 @@
-html{
+html {
     height: 100%;
 }
 
-body{
+body {
     background: url('/media/shoes_varities.jpg') no-repeat center center fixed;
     background-size: cover;
     color: darkgreen;
-    height: calc(90vh - 155px);
+    height: calc(100vh - 164px);
     font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -14,15 +14,15 @@ body{
     align-items: center;
     display: inline-flex;
     justify-content: center;
-    height: 1.2rem;
-    width: 1.2rem;
+    height: 1.5rem;
+    width: 1.5rem;
 }
 
 .logo-font {
     text-transform: uppercase;
 }
 
-.main-logo-link{
+.main-logo-link {
     width: fit-content;
 }
 
@@ -55,27 +55,27 @@ body{
 .shop-now-button:focus,
 .btn-black:hover,
 .btn-black:active,
-.btn-black:focus{
+.btn-black:focus {
     background: darkblue;
     color: darkorange;
 }
 
-.text-black{
+.text-black {
     color: black;
 }
 
-@media (min-width: 992px){
+@media (min-width: 992px) {
     .fixed-top-desktop-only {
         position: fixed;
         z-index: 1030;
     }
 
-    .header-container{
+    .header-container {
         padding-top: 160px;
     }
 }
 
-@media (max-width: 991px){
+@media (max-width: 991px) {
     .header-container {
         padding-top: 116px;
     }
@@ -94,8 +94,8 @@ body{
 }
 
 .btt-link,
-.update-link,
-.remove-item {
+.edit-link,
+.delete-item {
     cursor: pointer;
 }
 
@@ -104,7 +104,7 @@ body{
 .message-container {
     position: fixed;
     top: 73px;
-    right: 16.2px;
+    right: 16px;
     z-index: 99999999999;
 }
 
@@ -118,18 +118,18 @@ body{
 
 /*..............................Queries*/
 
-@media (min-width: 1200px){
-    .container{
+@media (min-width: 1200px) {
+    .container {
         max-width: 80%;
     }
 }
 
 
-.border-black{
+.border-black {
     border: 1px solid black !important;
 }
 
-.bg-black{
+.bg-black {
     background: darkblue !important;
 }
 

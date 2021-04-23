@@ -32,13 +32,14 @@ def put_to_bag(request, item_id):
             pack[item_id] += quantity
         else:
             pack[item_id] = quantity
-            messages.success(request, f'Put {product.name} to your pack')
+            messages.success(request, f'Placed {product.name} to your pack')
 
     request.session['pack'] = pack
     return redirect(redirect_url)
 
 
 def edit_pack(request, item_id):
+    product = get_object_or_404(Product, name=item_id)
     quantity = int(request.POST.get('quantity'))
     size = None
     if 'product_size' in request.POST:

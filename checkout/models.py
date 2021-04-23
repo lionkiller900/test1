@@ -39,7 +39,7 @@ class Order(models.Model):
         if not self.product_number:
             self.product_number = self._generate_product_number()
         super().save(*args, **kwargs)
-    
+
     def __str__(self):
         return self.product_number
 
