@@ -1,0 +1,3 @@
+.StripeElement--invalid {
+  border-color: #d3d186b9;
+}

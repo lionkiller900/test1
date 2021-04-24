@@ -39,7 +39,7 @@ def put_to_bag(request, item_id):
 
 
 def edit_pack(request, item_id):
-    product = get_object_or_404(Product, name=item_id)
+    product = get_object_or_404(Product, id=item_id)
     quantity = int(request.POST.get('quantity'))
     size = None
     if 'product_size' in request.POST:

@@ -113,17 +113,17 @@ Click here for the [image](https://indigo-mole-5e3p17r8.ws-eu03.gitpod.io/files/
 •	jQuery
 •	Stripe
 ### Framework tools
-•	Allauth
-•	Django
-•	Gunicorn
-•	Pillow
-•	Psycopg
-•	Unicorn
-•	Gitpod
-•	Pip3
-•	Django-heroku 
+- Allauth
+- Django
+- Gunicorn
+- Pillow
+- Psycopg
+- Unicorn
+- Gitpod
+- Pip3
+- Django-heroku 
 ### External deployment tools
-•	Heroku
+- Heroku
 
 # Testing
 Using DeVop technologies can be browsed using these platforms:
