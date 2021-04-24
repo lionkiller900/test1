@@ -5,9 +5,9 @@ https://stripe.com/docs/stripe-js
 
 */
 
-var stripe_public_key = $('#id_stripe_public_key').text().slice(1, -1);
-var client_secret = $('#id_client_secret').text().slice(1, -1);
-var stripe = Stripe(stripe_public_key);
+var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
+var clientSecret = $('#id_client_secret').text().slice(1, -1);
+var stripe = Stripe(stripePublicKey);
 var elements = stripe.elements();
 /*this is no longer present in the Stripe website, so I copied it from The lesson */
 var style = {
@@ -26,4 +26,50 @@ var style = {
     }
 };
 var card = elements.create('card', {style: style});
-card.mount('#card-element');
+card.mount('#card-elements');
+
+// This will handle the error in the error
+card.addEventListener('change', function (event) {
+    var errorDiff = document.getElementById('card-error');
+    if (event.error) {
+        var html = `
+            <span class="icon" role="alert">
+                <i class="fas fa-times"></i>
+            </span>
+            <span>${event.error.message}</span>
+        `;
+        $(errorDiff).html(html);
+    } else {
+        errorDiff.textContent = '';
+    }
+});
+
+// Handle form submit. Note that this is no longer in the Stripe website sot it is gotten from the lesson.
+var form = document.getElementById('payment-form');
+
+form.addEventListener('submit', function(ev) {
+    ev.preventDefault();
+    card.update({ 'disabled': true});
+    $('#submit-button').attr('disabled', true);
+    stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+            card: card,
+        }
+    }).then(function(result) {
+        if (result.error) {
+            var errorDiff = document.getElementById('card-error');
+            var html = `
+                <span class="icon" role="alert">
+                <i class="fas fa-times"></i>
+                </span>
+                <span>${result.error.message}</span>`;
+            $(errorDiff).html(html);
+            card.update({ 'disabled': false});
+            $('#submit-button').attr('disabled', false);
+        } else {
+            if (result.paymentIntent.status === 'succeeded') {
+                form.submit();
+            }
+        }
+    });
+});
