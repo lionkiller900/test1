@@ -15,19 +15,7 @@
         </div>
     </div>
 {% endblock %}
-<hr class="my-0">
-    <div class="row text-black text-right">
-        <div class="col-7 offset-2">
-            <p class="my-0">Order Total:</p>
-            <p class="my-0">Delivery:</p>
-            <p class="my-0">Grand Total:</p>
-        </div>
-        <div class="col-3">
-                        <p class="my-0">£{{ overall|floatformat:2 }}</p>
-                        <p class="my-0">£{{ delivery|floatformat:2 }}</p>
-                        <p class="my-0"><strong>£{{ overall_total|floatformat:2}}</strong></p>
-        </div>
-    </div>
+
 {% block content %}
     <div class="innerclap"></div>
     <div class="container">
@@ -71,6 +59,19 @@
                         </div>
                     </div>
                 {% endfor %}
+                <hr class="my-0">
+                <div class="row text-black text-right">
+                    <div class="col-7 offset-2">
+                        <p class="my-0">Order Total:</p>
+                        <p class="my-0">Delivery:</p>
+                        <p class="my-0">Grand Total:</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="my-0">£{{ overall|floatformat:2 }}</p>
+                        <p class="my-0">£{{ delivery|floatformat:2 }}</p>
+                        <p class="my-0"><strong>£{{ overall_total|floatformat:2}}</strong></p>
+                    </div>
+                </div>
             </div>
             <div class="col-12 col-lg-6">
                 <p class="text-muted">Not yet a member? Man-up and fill this form.</p>
