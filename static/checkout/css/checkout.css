@@ -33,7 +33,22 @@
 }
 
 #payment-form .form-control,
-#card-elements {
+#card-element {
     color: rgb(2, 2, 16);
     border: 1px solid rgb(1, 1, 7);
+}
+
+#loading-innerclap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: darkorchid;
+    z-index: 9999;
+}
+
+.load-spin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
 }

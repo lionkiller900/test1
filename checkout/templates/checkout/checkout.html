@@ -105,10 +105,10 @@
                     <fieldset class="px-3 mb-5">
                         <legend class="fieldset-label small text-dark px-2 w-auto">Checkout Payment</legend>
                         <!--The payment is successfully transacted-->
-                        <div class="mb-3" id="card-elements"></div>
+                        <div class="mb-3" id="card-element"></div>
 
                         <!--This shows a payment problem-->
-                        <div class="mb-3 text-yellow" id="card-error" role="alert"></div>
+                        <div class="mb-3 text-yellow" id="card-errors" role="alert"></div>
                     </fieldset>
 
                     <div class="submit-button text-right mt-5 mb-2">                    
@@ -134,6 +134,13 @@
                 </form>
             </div>
         </div>
+    </div>
+    <div id="loading-innerclap">
+        <h2 class="test-dark logo-font loading-spin">
+            <span class="icon">
+                <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+            </span>
+        </h2>
     </div>
 {% endblock %}
 

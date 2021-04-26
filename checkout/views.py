@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.conf import settings
 
 from .forms import OrderForm
-from .models import OrderLineItem
+from .models import Order, OrderLineItem
 from products.models import Product
 from pack.contexts import pack_contents
 
@@ -18,18 +18,19 @@ def checkout(request):
         pack = request.session.get('pack', {})
 
         form_data = {
-            'full_name': request.POST['Name'],
-            'email': request.POST['Email'],
-            'phone_number': request.POST['Phone Number'],
-            'county': request.POST['County'],
-            'postcode': request.POST['Postcode'],
-            'home_address': request.POST['Home Address 1'],
-            'home_Address_continued': request.POST['Home Address 2'],
-            'country': request.POST['County'],
+            'Name': request.POST['Name'],
+            'email': request.POST['email'],
+            'phone_number': request.POST['phone_number'],
+            'county': request.POST['county'],
+            'postcode': request.POST['postcode'],
+            'home_Address': request.POST.get('home_Address', False),
+            'home_Address_continued': request.POST.get('home_Address_continued', False),
+            'country': request.POST['county'],
 
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
+            print("Form valid")
             order = order_form.save()
             for item_id, item_data in pack.items():
                 try:
@@ -42,7 +43,7 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data['item_by_size'].items():
+                        for size, quantity in item_data['items_by_size'].items():
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
@@ -51,7 +52,7 @@ def checkout(request):
                             )
                             order_line_item.save()
                 except Product.DoesNotExist:
-                    message.error(request,(
+                    messages.error(request,(
                         "This footware is not found in our storage. Get back to us soon.")
                     )
                     order.delete()
@@ -59,8 +60,9 @@ def checkout(request):
 
 
             request.session['save_detail'] = 'save_detail' in request.POST
-            return redirect(reverse('purchase_success', args=[order.order_number]))
+            return redirect(reverse('purchase_success', args=[order.product_number]))
         else:
+            print("Form not valid")
             messages.error(request, 'Carefully check! \
                 There is an error in your form.')
     else:
@@ -77,7 +79,7 @@ def checkout(request):
             amount=stripe_overall,
             currency=settings.STRIPE_CURRENCY,
         )
-
+        print("Intent", intent)
         order_form = OrderForm()
     
     if not stripe_public_key:
@@ -93,14 +95,14 @@ def checkout(request):
 
     return render(request, template, context)
 
-def purchase_success(request, order_number):
+def purchase_success(request, product_number):
     """
     This deals with successful shoe purchase
     """
     save_detail = request.session.get('save_detail')
-    order = get_object_or_404(Order, order_number=order_number)
+    order = get_object_or_404(Order, product_number=product_number)
     messages.success(request, f'Item Succesfully purchased! \
-        This is your order number: {order_number}. An email confirming \
+        This is your order number: {product_number}. An email confirming \
         your purchase will be sent to you on {order.email}.')
 
     if 'pack' in request.session:

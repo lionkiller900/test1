@@ -8,6 +8,7 @@ def update_on_save(sender, instance, created, **kwargs):
     """
     this will save/update the lineitem
     """
+    print("Save signal fired")
     instance.order.update_total()
 
 @receiver(post_delete, sender=OrderLineItem)
