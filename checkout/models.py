@@ -20,6 +20,8 @@ class Order(models.Model):
     cost_of_order = models.DecimalField(max_digits=8, decimal_places = 2, null=False, blank=False, default=0)
     overall_cost = models.DecimalField(max_digits=10, decimal_places = 2, null=False, blank=False, default=0)
     grand_cost = models.DecimalField(max_digits=10, decimal_places = 2, null=False, blank=False, default=0)
+    original_pack = models.TextField(null=False, blank=False, default='')
+    stripe_p_id = models.CharField(max_length=300, null=False, blank=False, default='')
 
     def _generate_product_number(self):
 

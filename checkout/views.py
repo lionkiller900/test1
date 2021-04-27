@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 
@@ -8,7 +9,23 @@ from products.models import Product
 from pack.contexts import pack_contents
 
 import stripe
+import json
 
+@require_POST
+def stripe_checkout_data(request):
+    try:
+        p_id = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(p_id, metadata={
+            'pack': json.dumps(request.session.get('pack', {})),
+            'save_detail': request.POST.get('save_detail'),
+            'username': request.user,
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Apologies no payment has occured.\
+            Please come back soon.')
+        return HttpResponse(content=e, status=400)
 
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
@@ -25,13 +42,17 @@ def checkout(request):
             'postcode': request.POST['postcode'],
             'home_Address': request.POST.get('home_Address', False),
             'home_Address_continued': request.POST.get('home_Address_continued', False),
-            'country': request.POST['county'],
+            'country': request.POST['country'],
 
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             print("Form valid")
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            p_id = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_p_id = p_id
+            order.original_pack = json.dumps(pack)
+            order.save()
             for item_id, item_data in pack.items():
                 try:
                     product = Product.objects.get(id=item_id)
@@ -68,7 +89,7 @@ def checkout(request):
     else:
         pack = request.session.get('pack', {})
         if not pack:
-            messgae.error(request, "There are no shoes in the pack")
+            messages.error(request, "There are no shoes in the pack")
             return redirect(reverse('products'))
 
         current_pack = pack_contents(request)
