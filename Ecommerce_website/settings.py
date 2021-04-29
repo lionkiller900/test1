@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'products',
     'pack',
     'checkout',
+    'profiles',
 
      #other applications
     'storages',
@@ -118,7 +119,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 7
-LOGIN_URL = '/storage/login/'
+LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'Ecommerce_website.wsgi.application'

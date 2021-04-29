@@ -4,10 +4,16 @@ from django.db import models
 from django.db.models import Sum
 from django.conf import settings
 
+from django_countries.fields import CountryField
+
 from products.models import Product
+from profiles.models import UserProfile
+
 
 class Order(models.Model):
     product_number = models.CharField(max_length=40, null=False, blank=False)
+    user_account = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, 
+                                    null=True, blank=True, related_name='orders')
     Name = models.CharField(max_length=60, null=False, blank=False)
     email = models.EmailField(max_length=300, null=False, blank=False)
     phone_number = models.CharField(max_length=60, null=False, blank=False)
@@ -15,7 +21,7 @@ class Order(models.Model):
     home_Address_continued = models.CharField(max_length=60, null=False, blank=False)
     postcode = models.CharField(max_length=30, null=False, blank=False)
     county = models.CharField(max_length=50, null=False, blank=False)
-    country = models.CharField(max_length=50, null=False, blank=False)
+    country = CountryField(blank_label='', null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
     cost_of_order = models.DecimalField(max_digits=8, decimal_places = 2, null=False, blank=False, default=0)
     overall_cost = models.DecimalField(max_digits=10, decimal_places = 2, null=False, blank=False, default=0)
