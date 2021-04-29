@@ -64,6 +64,61 @@ body {
     color: black;
 }
 
+/*This is for allauth design*/
+
+.allauth-form-inner-content p {
+    margin-top: 1.4rem;
+    color: #b86bae;
+}
+
+.allauth-form-inner-content input {
+    border-color: rgba(26, 2, 2, 0.897);
+    border-radius: 0;
+}
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
+.allauth-form-inner-content input::placeholder {
+    color: #aac4bb;
+}
+
+.allauth-form-inner-content button,
+.allauth-form-inner-content input[type='submit'] {
+	/* btn */
+	display: inline-block;
+    font-weight: 350;
+    color: rgb(235, 221, 221);
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.938);
+    border: 1px solid rgb(29, 3, 3);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0;
+
+    /* standard bootstrap btn transitions */
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.allauth-form-inner-content button:hover,
+.allauth-form-inner-content input[type='submit']:hover {	
+	color: rgba(255, 255, 255, 0.89);
+    background-color: #222;
+    border-color: rgb(61, 5, 5);
+}
+
+.allauth-form-inner-content a {
+	color: #427699; /* text-info */
+}
+
+
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
         position: fixed;
@@ -71,7 +126,7 @@ body {
     }
 
     .header-container {
-        padding-top: 160px;
+        padding-top: 164px;
     }
 }
 
@@ -100,6 +155,10 @@ body {
 }
 
 /*.............................. toasts basede on bootstrap */
+
+input[name='que']::placeholder {
+    color: #2c70b4;
+}
 
 .message-container {
     position: fixed;
@@ -137,6 +196,14 @@ body {
     height: 100%;
     width: 100%;
     position: fixed;
+    background: whitesmoke;
+    z-index: -1;
+}
+
+.outerclap {
+    height: 100%;
+    width: 98%;
+    position: absolute;
     background: whitesmoke;
     z-index: -1;
 }
