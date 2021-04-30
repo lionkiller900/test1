@@ -6,6 +6,8 @@ from django.conf import settings
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Product
+from profiles.forms import UserProfileForm
+from profiles.models import UserProfile
 from pack.contexts import pack_contents
 
 import stripe
@@ -100,8 +102,23 @@ def checkout(request):
             amount=stripe_overall,
             currency=settings.STRIPE_CURRENCY,
         )
-        print("Intent", intent)
-        order_form = OrderForm()
+        
+        if request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                order_form = OrderForm(initial={
+                    'Name': profile.user.get_full_name(),
+                    'phone_number': profile.default_phone_number,
+                    'home_Address': profile.default_home_Address,
+                    'home_Address_continued': profile.default_home_Address_continued,
+                    'county': profile.default_county,
+                    'country': profile.default_country,
+                })
+            except UserProfile.DoesNotExist:
+                    order_form = OrderForm()
+        else:
+            print("Intent", intent)
+            order_form = OrderForm()
     
     if not stripe_public_key:
         messages.warning(request, 'your Stripe public key is not found. \
@@ -122,6 +139,28 @@ def purchase_success(request, product_number):
     """
     save_detail = request.session.get('save_detail')
     order = get_object_or_404(Order, product_number=product_number)
+    
+    if request.user.is_authenticated:
+        profile = UserProfile.objects.get(user=request.user)
+        # This puts the user's profile to the purchase order
+        order.user_account = profile
+        order.save()
+
+        if save_detail:
+            profile_account = {
+                'default_phone_number': order.phone_number,
+                'default_postcode': order.postcode,
+                'default_home_Addres': order.home_Addres,
+                'default_home_Address_continued': order.home_Address_continued,
+                'default_county': order.county,
+                'default_country': order.country,
+            }
+            customer_profile_form = UserProfileForm(profile_account, instance=profile)
+            if customer_profile_form.is_valid():
+                customer_profile_form.save()
+
+
+
     messages.success(request, f'Item Succesfully purchased! \
         This is your order number: {product_number}. An email confirming \
         your purchase will be sent to you on {order.email}.')

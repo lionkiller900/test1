@@ -4,6 +4,8 @@ from django.contrib import messages
 from .models import UserProfile
 from .forms import UserProfileForm
 
+from checkout.models import Order
+
 def profile(request):
     
     profile = get_object_or_404(UserProfile, user=request.user)
@@ -26,3 +28,18 @@ def profile(request):
 
     return render(request, template, context)
 
+def product_history(request, product_number):
+    order = get_object_or_404(Order, product_number=product_number)
+
+    messages.info(request, (
+        f'This is the old product number confirmation{product_number}.'
+        'A message will be sent to you on your email confirming the purchase'
+    ))
+
+    template = 'checkout/purchase_success.html'
+    context = {
+        'order': order,
+        'sent_profile': True,
+    }
+
+    return render(request, template, context)

@@ -13,7 +13,7 @@ class OrderAdmin(admin.ModelAdmin):
                     'grand_cost', 'original_pack', 
                     'stripe_p_id')
 
-    fields = ('product_number', 'date', 'Name', 'email', 
+    fields = ('product_number', 'user_account', 'date', 'Name', 'email', 
             'phone_number', 'home_Address', 'home_Address_continued', 
             'postcode', 'county', 'country', 'original_pack', 
             'stripe_p_id')

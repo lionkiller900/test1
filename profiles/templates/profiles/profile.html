@@ -36,7 +36,43 @@
             </div>
             <div class="col-12 col-lg-7">
                 <p class="text-muted">Customer purchase history</p>
-                {{ orders }}
+                <div class="product-history table-responsive">
+                    <table class="table table-sm table-borderless">
+                        <thread>
+                            <tr>
+                                <th>Product Number</th>
+                                <th>Purchase Date</th>
+                                <th>Shoe Items</th>
+                                <th>Purchase Totals</th>
+                            </tr>
+                        </thread>
+                        <tbody>
+                            {% for order in orders %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'product_history' order.product_number %}" 
+                                        title="{{ order.product_number }}">
+                                            {{ order.product_number|truncatechars:7 }}
+                                        </a>
+                                    </td>
+                                    <td>{{ order.date }}</td>
+                                    <td>
+                                        <ul class="list-unstyled">
+                                            {% for item in order.Lineitems.all %}
+                                                <li class="small">
+                                                    {% if item.product.shoe_sizes %}
+                                                        Shoe size {{ item.product_size|upper }}
+                                                    {% endif %}{{ item.product.name }} x{{ item.quantity }}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                    <td>£{{ order.grand_cost }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 {% endblock %}
