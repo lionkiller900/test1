@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
-from .models import Product, Category
 
-# Create your views here.
+from .models import Product, Category
+from .forms import ProductForm
+
+# Views are created here.
 
 def all_products(request):
     """This is for sorting and searching products online"""
@@ -59,10 +61,52 @@ def all_products(request):
 def product_description(request, product_id):
     """This is for viewing the product description"""
 
-    products = get_object_or_404(Product, id=product_id)
+    product = get_object_or_404(Product, id=product_id)
 
     context = {
-        'products': products, 
+        'product': product, 
     }
 
     return render(request, 'products/product_description.html', context)
+
+def put_product(request):
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Shoe product is now added!')
+            return redirect(reverse('put_product'))
+        else:
+            messages.error(request, 'There is a problem. Please make sure it is done correctly.')
+    else:
+        form = ProductForm()
+    
+    template = 'products/put_product.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+def update_product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Success! It is now updated')
+            return redirect(reverse('product_description', args=[product_id]))
+        else:
+            messages.error(request, 'Could not update the shoe. Ensure that it is done correctly.')
+    else:
+        form = ProductForm(instance=product)
+        messages.info(request, f'Updating {product.name}')
+
+    template = 'products/update_product.html'
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, template, context)

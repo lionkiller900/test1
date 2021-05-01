@@ -129,10 +129,12 @@ WSGI_APPLICATION = 'Ecommerce_website.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 if 'DATABASE_URL' in os.environ:	
+    print("Postgres DB")
     DATABASES = {	
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))	
     }
 else:
+    print("SQLIte3 DB")
     DATABASES = {
         'default': {	
             'ENGINE': 'django.db.backends.sqlite3',	
@@ -215,3 +217,4 @@ STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+DEFAULT_FROM_EMAIL = 'ecommerceshoes@example.com'

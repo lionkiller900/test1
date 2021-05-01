@@ -17,21 +17,21 @@
         <div class="row">
             <div class="col-6 col-md-5 col-lg-4 offset-lg-2">
                 <div class="image-container my-4">
-                        {% if products.image %}
-                        <a href="{{ products.image.url }}" target="_blank">
-                            <img class="card-img-top img-fluid" src="{{ products.image.url}}" alt="{{ products.name }}">
+                        {% if product.image %}
+                        <a href="{{ product.image.url }}" target="_blank">
+                            <img class="card-img-top img-fluid" src="{{ product.image.url}}" alt="{{ product.name }}">
                         </a>
                         {% else %}
                             <a href="">
-                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ products.name }}">
+                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                             </a>
                         {% endif %}
                 </div>
             </div>  
         <div class="col-6 col-md-5 col-lg-4 offset-lg-2">
             <div class="product-description-container mb-5 mt-md-5">
-                 <p class="mb-0">{{ products.name }}</p>
-                 <p class="lead mb-0 text-left font-weight-bold">£{{ products.prices }}</p>
+                 <p class="mb-0">{{ product.name }}</p>
+                 <p class="lead mb-0 text-left font-weight-bold">£{{ product.prices }}</p>
                  {% if product.categories %}
                         <p class="small mt-1 mb-0">
                             <a class="text-muted" href="{% url 'products' %}?categories={{ product.categories.name }}">
@@ -40,15 +40,15 @@
                         </p>
                 {% endif %}
                 {% if product.rating %}
-                    <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ products.rating }} / 5</small>
+                    <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
                 {% else %}
                     <small class="text-muted">No Rating available</small>
                 {% endif %}
-                <p class="mt-3">{{ products.descriptions }}</p>
-                <form class="form" action="{% url 'put_to_bag' products.id %}" method="POST">
+                <p class="mt-3">{{ product.descriptions }}</p>
+                <form class="form" action="{% url 'put_to_pack' product.id %}" method="POST">
                     {% csrf_token %}
                     <div class="form-row">
-                        {% with products.shoe_sizes as kg %}
+                        {% with product.shoe_sizes as kg %}
                         {% if kg %}
                             <div class="col-12">
                                 <p><strong>Shoe Size:</strong></p>

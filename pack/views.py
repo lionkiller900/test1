@@ -8,7 +8,7 @@ from products.models import Product
 def view_pack(request):
     return render(request, 'pack/pack.html')
 
-def put_to_bag(request, item_id):
+def put_to_pack(request, item_id):
 
     product = Product.objects.get(id=item_id)
     quantity = int(request.POST.get('quantity'))

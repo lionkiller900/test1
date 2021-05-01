@@ -1,0 +1,24 @@
+Hi {{ order.Name}}
+
+This is to confirm that your purchase order has gone through. Your phone details is confirmed as {{ order.product_number }}. The details are below:
+
+Product Number: {{ order.product_number }}
+Date of purchase: {{ order.date }}
+
+Total Purchase: £{{ order.overall_cost }}
+Cost of order: £{{ order.cost_of_order }}
+Grand Cost: £{{ order.grand_cost }}
+
+Your item(s) will be delivered to: 
+{{ order.home_Address }}, {{ order.home_Address_continued }}, 
+{{ order.county }}, 
+{{ order.country }},
+{{ order.postcode }}
+
+For further enquires please contact us on {{ contact_email }}
+
+Thank you and enjoy your item,
+
+Yours Sincerely,
+
+E-Commerce Shoes
