@@ -1,0 +1,8 @@
+<h6><strong>Pack Total: £{{ overall|floatformat:2 }}</strong></h6>
+<h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
+<h5 class="mt-4"><strong>Overall Total: £{{ overall_total|floatformat:2}}</strong></h5>
+{% if real_delivery_alpha > 0 %}
+    <p class="mb-1 text-danger">
+        The more you spend the more you can get<strong> £{{ real_delivery_alpha }}</strong> worth.
+    </p>
+{% endif %}

@@ -79,7 +79,7 @@
                     </div>
                 </li>
                 <li class="list-inline-item">
-                    <a class="{% if overall_total %}text-info font-weight-bold{% else %} text-black{% endif %} nav-link" href="{% url 'view_pack' %}">
+                    <a class="{% if overall_total %}text-info font-weight-bold{% else %} text-black{% endif %} nav-link d-block d-lg-none" href="{% url 'view_pack' %}">
                         <div class="text-center">
                             <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                             <p class="my-0">
@@ -96,7 +96,7 @@
             </div>
         </div>
         <div class="row bg-white">
-            <nav class="navbar navbar-expand-lg navbar-light w-50">
+            <nav class="navbar navbar-expand-lg navbar-light w-105">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="false" aria-label="Toggle-navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -106,7 +106,7 @@
         </div>
         <div id="delivery-banner" class="row text-center">
             <div class="col bg-black text-white">
-                <h4 class="logo-font my-1">It is free for home delivery at prices over £{{ free_delivery_limit }}!</h4>
+                <h5 class="logo-font my-1">It is free for home delivery at prices over £{{ free_delivery_limit }}!</h5>
             </div>
         </div>
     </header>

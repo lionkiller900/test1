@@ -26,7 +26,38 @@
         <div class="row">
             <div class="col">
                 {% if pack_items %}
-                    <div class="table-responsive rounded">
+                    <div class="d-block d-md-none"> 
+                        <div class="row">
+                            <div class="col">
+                                {% include "pack/pack-overalls.html" %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                {% include "pack/purchase-buttons.html" %}
+                                <p class="text-muted mb-5">This is the overview of your pack items. </p>
+                            </div>
+                        </div>
+                        {% for item in pack_items %}
+                            <div class="row">
+                                <div class="col-12 col-sm-6 mb-2">
+                                    {% include "pack/pack-image.html" %}
+                                </div>
+                                <div class="col-12 col-sm-6 mb-2">
+                                    {% include "pack/pack-info.html" %}
+                                </div>
+                                <div class="col-12 col-sm-6 order-sm-last">
+                                    <p class="my-0">Shoe Price: £{{ item.product.prices }}</p>
+                                    <p><strong>Total:</strong>£{{ item.product.prices | calc_halftotal:item.quantity }}</p>
+                                </div>
+                                <div class="col-12 col-sm-6 mb-2">
+                                    {% include "pack/quantity-form.html" %}
+                                </div>
+                            </div>
+                            <div class="row"><div class="col"><hr></div></div>
+                        {% endfor %}
+                    </div>
+                    <div class="table-responsive rounded d-none d-md-block">
                         <table class="table table-sm table-borderless ">
                             <thread class="text-black">
                                 <tr>
@@ -41,97 +72,42 @@
                             {% for item in pack_items %}
                                 <tr>
                                     <td class="p-3 w-25">
-                                        {% if item.product.image %}
-                                        <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
-                                        {% else %}
-                                        <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
-                                        {% endif %}
+                                        {% include "pack/pack-image.html" %}
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                                        <p class="my-0"><strong>Shoe Size: </strong>{% if item.product.shoe_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
-                                        <p class="my-0 small text-muted"> SKUS: {{ item.product.skus|upper }}</p>
+                                        {% include "pack/pack-info.html" %}
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">£{{ item.product.prices }}</p>
                                     </td>
-                    <td class="py-3 w-25">
-                        <form class="form change-form" method="POST" action="{% url 'edit_pack' item.item_id %}">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <button class="decrease-qt btn btn-sm btn-black rounded-0"
-                                            data-item_id="{{ item.item_id }}" id="decrease-qt_{{ item.item_id }}">
-                                            <span>
-                                                <i class="fas fa-minus fa-sm"></i>
-                                            </span>
-                                        </button>
+                                    <td class="py-3 w-25">
+                                        {% include "pack/quantity-form.html" %}
+                                    </td>
+                                    <td class="py-3">
+                                        <p class="my-0">£{{ item.product.prices | calc_halftotal:item.quantity }}</p>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                            <tr>
+                                                <td colspan="5" class="pt-4 text-right">
+                                                    {% include "pack/pack-overalls.html" %}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5" class="text-right">
+                                                    {% include "pack/purchase-buttons.html" %}
+                                                </td>
+                                            </tr> 
+                                        </table>
                                     </div>
-                                    <input class="form-control form-control-sm qt_input" type="number" 
-                                        name="quantity" value="{{ item.quantity }}" min="1" max="99" 
-                                        data-item_id="{{ item.item_id }}" 
-                                        id="id_qt_{{ item.item_id }}">
-                                    <div class="input-group-prepend">
-                                        <button class="increase-qt btn btn-sm btn-black rounded-0"
-                                            data-item_id="{{ product.id }}" id="increase-qt_{{ item.item_id }}">
-                                            <span>
-                                                <i class="fas fa-plus fa-sm"></i>
-                                            </span>
-                                        </button>
-                                    </div>
-                                    {% if item.product.shoe_sizes %}
-                                        <input type="hidden" name="shoe-sizes" value="{{ item.size}}"
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </form>
-                        <a class="edit-link text-info"><small>Change</small></a>
-                        <a class="delete-item text-danger float-right" id="delete_{{ item.item_id }}" data-product_size="{{ item.size }}"><small>Delete</small></a>
-                    </td>
-                    <td class="py-3">
-                        <p class="my-0">£{{ item.product.prices | calc_halftotal:item.quantity }}</p>
-                    </td>
-                </tr>
-                {% endfor %}
-                            <tr>
-                                <td colspan="5" class="pt-4 text-right">
-                                    <h6><strong>Pack Total: £{{ overall|floatformat:2 }}</strong></h6>
-                                    <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
-                                    <h5 class="mt-4"><strong>Overall Total: £{{ overall_total|floatformat:2}}</strong></h5>
-                                    {% if real_delivery_alpha > 0 %}
-                                        <p class="mb-1 text-danger">
-                                            The more you spend the more you can get<strong> £{{ real_delivery_alpha }}</strong> worth.
-                                        </p>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="5" class="text-right">
-                                    <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                                        <span class="icon">
-                                            <i class="fas fa-chevron-left"></i>
-                                        </span>
-                                        <span class="text-uppercase">Continue Shopping</span>
-                                    </a>
-                                    <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
-                                        <span class="text-uppercase">Checkout</span>
-                                        <spa class="icon">
-                                            <i class="fas fa-lock"></i>
-                                        </spa>
-                                    </a>
-                                </td>
-                            </tr> 
-                        </table>
-                    </div>
-                {% else %}
-                    <p class="lead mb-5">There is nothing here!</p>
-                    <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                        <span class="icon">
-                            <i class="fas fa-chevron-left"></i>
-                        </span>
-                        <span class="text-uppercase">Continue Shopping</span>
-                    </a>
+                                {% else %}
+                                <p class="lead mb-5">There is nothing here!</p>
+                                <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                                    <span class="icon">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="text-uppercase">Continue Shopping</span>
+                                </a>
                 {% endif %}
             </div>
         </div>
