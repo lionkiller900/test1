@@ -44,7 +44,7 @@
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <form method="GET" action="{% url 'products' %}">
-                    <div class="input-group w-50">
+                    <div class="input-group w-90">
                         <input class="form-control border border-black round-0" type="text" name="que" placeholder="search us">
                         <div class="input-group-append">
                             <button class="form-control btn btn-black border border-black rounded-0" type="submit">
@@ -79,7 +79,7 @@
                     </div>
                 </li>
                 <li class="list-inline-item">
-                    <a class="{% if overall_total %}text-info font-weight-bold{% else %} text-black{% endif %} nav-link d-block d-lg-none" href="{% url 'view_pack' %}">
+                    <a class="{% if overall_total %}text-info font-weight-bold{% else %} text-black{% endif %} nav-link" href="{% url 'view_pack' %}">
                         <div class="text-center">
                             <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                             <p class="my-0">
@@ -96,7 +96,7 @@
             </div>
         </div>
         <div class="row bg-white">
-            <nav class="navbar navbar-expand-lg navbar-light w-105">
+            <nav class="navbar navbar-expand-lg navbar-light w-100">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="false" aria-label="Toggle-navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

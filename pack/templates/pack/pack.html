@@ -62,7 +62,6 @@
                             <thread class="text-black">
                                 <tr>
                                     <th scope="col">About the shoe</th>
-                                    <th scope="col"></th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Quality</th>
                                     <th scope="col">Subtotal</th>
@@ -87,27 +86,27 @@
                                         <p class="my-0">£{{ item.product.prices | calc_halftotal:item.quantity }}</p>
                                     </td>
                                 </tr>
-                                {% endfor %}
-                                            <tr>
-                                                <td colspan="5" class="pt-4 text-right">
-                                                    {% include "pack/pack-overalls.html" %}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="5" class="text-right">
-                                                    {% include "pack/purchase-buttons.html" %}
-                                                </td>
-                                            </tr> 
-                                        </table>
-                                    </div>
-                                {% else %}
-                                <p class="lead mb-5">There is nothing here!</p>
-                                <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                                    <span class="icon">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="text-uppercase">Continue Shopping</span>
-                                </a>
+                            {% endfor %}
+                                <tr>
+                                    <td colspan="5" class="pt-4 text-right">
+                                        {% include "pack/pack-overalls.html" %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" class="text-right">
+                                        {% include "pack/purchase-buttons.html" %}
+                                    </td>
+                                </tr> 
+                            </table>
+                        </div>
+                    {% else %}
+                    <p class="lead mb-5">There is nothing here!</p>
+                    <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase">Continue Shopping</span>
+                    </a>
                 {% endif %}
             </div>
         </div>
