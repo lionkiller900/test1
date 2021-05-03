@@ -239,10 +239,10 @@ input[name='que']::placeholder {
 
 .outerclap {
     height: 100%;
-    width: 98%;
-    position: absolute;
+    width: 100%;
+    position: fixed;
     background: whitesmoke;
-    z-index: -1;
+    z-index: 1;
 }
 
 a.cat-badge > span.badge:hover {
