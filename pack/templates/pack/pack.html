@@ -5,9 +5,7 @@
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
-            <div class="col">
-
-            </div>
+            <div class="col"></div>
         </div>
     </div>
 {% endblock %}
@@ -18,7 +16,7 @@
         <div class="row">
             <div class="col">
                 <hr>
-                <h3 class="logo-font mb-4">Your Shoe Pack.</h3>
+                <h2 class="logo-font mb-4">Shopping Pack</h2>
                 <hr>
             </div>
         </div>
@@ -26,7 +24,7 @@
         <div class="row">
             <div class="col">
                 {% if pack_items %}
-                    <div class="d-block d-none"> 
+                    <div class="d-block d-md-none">
                         <div class="row">
                             <div class="col">
                                 {% include "pack/pack-overalls.html" %}
@@ -35,7 +33,7 @@
                         <div class="row">
                             <div class="col">
                                 {% include "pack/purchase-buttons.html" %}
-                                <p class="text-muted mb-5">This is the overview of your pack items. </p>
+                                <p class="text-muted mb-5">This is the overview of your pack items.</p>
                             </div>
                         </div>
                         {% for item in pack_items %}
@@ -50,23 +48,29 @@
                                     <p class="my-0">Shoe Price: £{{ item.product.prices }}</p>
                                     <p><strong>Total:</strong>£{{ item.product.prices | calc_halftotal:item.quantity }}</p>
                                 </div>
-                                <div class="col-12 col-sm-6 mb-2">
+                                <div class="col-12 col-sm-6">
                                     {% include "pack/quantity-form.html" %}
                                 </div>
                             </div>
                             <div class="row"><div class="col"><hr></div></div>
                         {% endfor %}
+                        <div class="btt-button shadow-sm rounded-0 border border-black">
+                            <a class="btt-link d-flex h-100">
+                                <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
+                            </a>	
+                        </div>
                     </div>
+                    
                     <div class="table-responsive rounded d-none d-md-block">
-                        <table class="table table-sm table-borderless ">
-                            <thread class="text-black">
+                        <table class="table table-sm table-borderless">
+                            <thead class="text-black">
                                 <tr>
                                     <th scope="col">About the shoe</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Quality</th>
                                     <th scope="col">Subtotal</th>
                                 </tr>
-                            </thread>
+                            </thead>
 
                             {% for item in pack_items %}
                                 <tr>
@@ -87,19 +91,19 @@
                                     </td>
                                 </tr>
                             {% endfor %}
-                                <tr>
-                                    <td colspan="5" class="pt-4 text-right">
-                                        {% include "pack/pack-overalls.html" %}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="5" class="text-right">
-                                        {% include "pack/purchase-buttons.html" %}
-                                    </td>
-                                </tr> 
-                            </table>
-                        </div>
-                    {% else %}
+                            <tr>
+                                <td colspan="5" class="pt-5 text-right">
+                                    {% include "pack/pack-overalls.html" %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" class="text-right">
+                                    {% include "pack/purchase-buttons.html" %}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                {% else %}
                     <p class="lead mb-5">There is nothing here!</p>
                     <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
                         <span class="icon">
