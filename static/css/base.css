@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background: url('/media/shoes_varities.jpg') no-repeat center center fixed;
+    background: url('/media/silver_background.jpg') no-repeat center center fixed;
     background-size: cover;
     color: darkgreen;
     height: calc(100vh - 164px);
@@ -126,7 +126,7 @@ body {
     }
 
     .header-container {
-        padding-top: 164px;
+        padding-top: 90px;
     }
 }
 
@@ -248,4 +248,48 @@ input[name='que']::placeholder {
 a.cat-badge > span.badge:hover {
     background: darkslategray !important;
     color: cornsilk !important;
+}
+
+.mt-2, .my-2 {
+    margin-top: 5rem!important;
+}
+
+/*footer*/
+
+footer-container {
+    background: white !important;
+    color: #000;
+    text-align: center;
+}
+
+#mailto {
+    color: #000;
+}
+
+#mailto:hover {
+    text-decoration: underline;
+}
+
+.contact-details i {
+    color: #000;
+    font-size: 2rem;
+    margin: 0 0.5rem;
+}
+
+.contact-details i:hover {
+    font-weight: 900; 
+}
+
+.footer-paragraph {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.footer-paragraph p {
+    margin: 0;
+} 
+.carousel-item {
+    height: 480px;
 }
