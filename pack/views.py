@@ -32,7 +32,7 @@ def put_to_pack(request, item_id):
             pack[item_id] += quantity
         else:
             pack[item_id] = quantity
-            messages.success(request, f'Placed {product.name} to your pack. Now click on the price above to checkout')
+            messages.success(request, f'Placed {product.name} to your pack. Now click on the price above to checkout or continue shopping.')
 
     request.session['pack'] = pack
     return redirect(redirect_url)
