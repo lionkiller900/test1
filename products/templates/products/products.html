@@ -26,15 +26,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="product-container col-10 offset">
+            <div class="product-container col-10 offset-1">
                 <div class="row mt-1 mb-2">
                     <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
                         <div class="sort-select-wrapper w-50">
                             <select id="sorting" class="custom-select-sm rounded-0 border border-{% if price_sorting != 'None_None' %}info{% else %}black{% endif %}">
                                 <option value="reset" {% if price_sorting == 'None_None '%}selected{% endif %}>Choose by</option>
-                                <option value="prices_asc" {% if price_sorting == 'prices_asc' %}selected{% endif %}>Price(Big to Small)</option>
-                                <option value="rating_asc" {% if price_sorting == 'rating_asc' %}selected{% endif %}>Rating(Big to Small)</option>
-                                <option value="categories_asc" {% if price_sorting == 'categories_asc' %}selected{% endif %}>Category(Big to Small)</option>
+                                <option value="prices_asc" {% if price_sorting == 'prices_asc' %}selected{% endif %}>Price(Ascending)</option>
+                                <option value="rating_asc" {% if price_sorting == 'rating_asc' %}selected{% endif %}>Rating(Ascending)</option>
+                                <option value="categories_asc" {% if price_sorting == 'categories_asc' %}selected{% endif %}>Category(Ascending</option>
                             </select>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                             {% if seek_term or present_categories or price_sorting != 'None_None' %}
                                 <span class="small"><a href="{% url 'products' %}">Products Page</a> | </span>
                             {% endif %}
-                            {{ products|length}} Products{% if seek_term %} found for <strong>"{{ seek_term }}"</strong>{% endif %}
+                            {{ products|length }} Products{% if seek_term %} found for <strong>"{{ seek_term }}"</strong>{% endif %}
                         </p>
                     </div>
                 </div>
@@ -116,32 +116,38 @@
             </div>
         </div>
     </div>
-{% include 'footer/footer.html' %}
+    <div class="container-flex footer-container mt-5">
+        <div class="row">
+            <div class="col-12 col-md-9">
+                {% include 'footer/footer.html' %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 
 {% block postloadjs %}
     {{ block.super }}
-><script type="text/javascript">
+<script type="text/javascript">
     $('#sorting').change(function(){
-    var selector = $(this);
-    var current_url = new URL(window.location);
+        var selector = $(this);
+        var current_url = new URL(window.location);
 
-    var selected_val = selector.val();
-    if(selected_val |= "reset"){
-        var sort = selected_val.split("_")[0];
-        var direction = selected_val.split("_")[1];
+        var selected_val = selector.val();
+        if(selected_val != "reset"){
+            var sort = selected_val.split("_")[0];
+            var direction = selected_val.split("_")[1];
 
-        current_url.searchParams.set("sort", sort);
-        current_url.searchParams.set("direction", direction);
+            current_url.searchParams.set("sort", sort);
+            current_url.searchParams.set("direction", direction);
 
-        window.location.replace(current_url);
-    }else{
-        current_url.searchParams.delete("sort");
-        current_url.searchParams.delete("direction");
+            window.location.replace(current_url);
+        }else{
+            current_url.searchParams.delete("sort");
+            current_url.searchParams.delete("direction");
 
-        window.location.replace(current_url);
-    }
-})
+            window.location.replace(current_url);
+        }
+    })
 </script>
 {% endblock %}

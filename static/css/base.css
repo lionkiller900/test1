@@ -260,6 +260,7 @@ footer-container {
     background: white !important;
     color: #000;
     text-align: center;
+    position: fixed;
 }
 
 #mailto {

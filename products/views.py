@@ -26,7 +26,7 @@ def all_products(request):
                 sortkey = 'less_name'
                 products = products.annotate(lower_name=Lower('name'))
             if sortkey == 'category':
-                sortkey == 'category_name'
+                sortkey = 'category_name'
 
             if 'direct' in request.GET:
                 direct = request.GET['direct']
