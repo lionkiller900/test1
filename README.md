@@ -91,11 +91,13 @@ I used Mockflow tools to design the website. For each page, I made 2 forms of wi
 - shoe pages
 - Account page
 
-Click here for the [wireframe](https://indigo-mole-5e3p17r8.ws-eu03.gitpod.io/files/download/?id=38fb05c9-870c-4221-8740-6426bf3593f2)
+<a href="">
+        <img src="/wireframes/wireframe_fullstack-3.png" alt="Webhooks successful">
+    </a>
 
 ## Flowcharts 
 I then made a flowchart for the site in terms of check out. (I decided to this by using Microsoft Word to design it). 
-<a href="">
+    <a href="">
         <img src="/wireframes/wireframe_MS_Fullstack-1.png" alt="Webhooks successful">
     </a>
 
@@ -158,6 +160,10 @@ These are the example pictures of non-laptop technologies:
 There were validating tools used to validate the CSS/HTML codes to verify for errors.
 One of them is the [validator](https://validator.w3.org/) which is used for HTML. The other for CSS is [jigsaw](https://jigsaw.w3.org/css-validator/)
 
+### Lighthouse
+To use Lighthouse, since it is Chrome based, you can easily download the Chrome and make it as an extension to the page.
+The Lighthouse should be next to the searchbar. Go on the website and click on Lighthouse and get a result.
+
 # BUGS IDENTIFIED
 ## Errors identified with Heroku push
 There were series of persistent errors encountered when trying to deploy to Heroku through Gitpod. One of the most common errors encountered are that the python version (Python 3.6.8) installed into Git do not support the version for pushing into Heroku. The version is needed to be upgraded to Python 3.8.8 for the stack Heroku-20 allowing the push to be successfully built. This is in addition when the required packages for Django to be successful where installed and validated them on requirements.txt. 
@@ -165,14 +171,21 @@ Another error encountered here is when the DISABLE_COLLECTSTATIC and the HEROKU_
 Other problems encountered
 The most common and enduring problem is the background image not showing (# THIS NEEDS TO BE EXPANDED).
 
-# STRIPE
-## Setting up Stripe
+# STRIPE and EMAIL
+## Setting up and using Stripe
 - On the Gitpod workspace, with pip3 installed, pip3 install stripe was typed. This links Stripe with Django.
 - On the Stripe website, a personal account was made.
 - The Stripe secret key and Stripe public key details were set up in the settings.py and env.py. Both keys are available on the API
     section under the Developers section. 
 - Test the stripe payment on the account site by making a purchase on the E-commerce website. This will send an alert on how successful
     transaction went. 
+- Based on the history logs, the payments should be successful based on the transaction. So here is a sample below:
+    <a href="">
+        <img src="/wireframes/Log_Payment_success_1.png" alt="Webhooks successful">
+    </a>
+    <a href="">
+        <img src="/wireframes/Log_payment_success_2.png" alt="Webhooks successful">
+    </a>
 - If the payment is successful it should view a HTTP status as 200(OK).
     <a href="">
         <img src="/wireframes/Webhooks_review.png" alt="Webhooks successful">
@@ -186,8 +199,21 @@ The most common and enduring problem is the background image not showing (# THIS
     <a href="">
         <img src="/wireframes/Webhook_fail_500.png" alt="Webhooks successful">
     </a>
-
 - In addition, the events of financial activities can be found on the Events area under the Developers tab.
+
+## Email
+- First you must install allauth using:
+
+        pip3 install django-allauth==0.41.0
+
+And then use
+
+        pip3 freeze > requirements.txt
+
+- Then obtain the passcode from your gmail account and paste it into Heroku Config vars. 
+-Test the email functionality by signing up. 
+Please note that the email used must be the email created from gmail. (i.e my gmail created.)
+
 
 # DEPLOYMENT
 ## Git deployment

@@ -258,7 +258,7 @@ a.cat-badge > span.badge:hover {
 
 footer-container {
     background: white !important;
-    color: #000;
+    color: rgb(0, 0, 0);
     text-align: center;
     position: fixed;
 }
@@ -271,6 +271,9 @@ footer-container {
     text-decoration: underline;
 }
 
+.social-links {
+    font-size: 2rem;
+}
 .contact-details i {
     color: #000;
     font-size: 2rem;
