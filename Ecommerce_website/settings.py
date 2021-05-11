@@ -14,7 +14,7 @@ import dj_database_url
 from pathlib import Path
 
 if os.path.exists("env.py"):
-  import env 
+    import env
 
 development = os.environ.get('DEVELOPMENT', False)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -52,8 +52,7 @@ INSTALLED_APPS = [
     'pack',
     'checkout',
     'profiles',
-
-     #other applications
+    # other applications
     'storages',
     'crispy_forms',
 ]
@@ -126,17 +125,17 @@ WSGI_APPLICATION = 'Ecommerce_website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-if 'DATABASE_URL' in os.environ:	
+if 'DATABASE_URL' in os.environ:
     print("Postgres DB")
-    DATABASES = {	
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))	
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
     print("SQLIte3 DB")
     DATABASES = {
-        'default': {	
-            'ENGINE': 'django.db.backends.sqlite3',	
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),	
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
 
@@ -191,24 +190,24 @@ if 'USE_AWS' in os.environ:
         'CacheControl': 'max-age=94608000',
     }
 
-    #Bucket Config
+    # Bucket Config
     AWS_STORAGE_BUCKET_NAME = 'ecommerce-shoes-website'
     AWS_S3_REGION_NAME = 'eu-west-2'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-    
-    #Static & media files
+
+    # Static & media files
     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
     STATICFILES_LOCATION = 'static'
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
     MEDIAFILES_LOCATION = 'media'
 
-    #This override and explicitly set the media and static URLs files
+    # This override and explicitly set the media and static URLs files
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
-    
-#This is for Stripe details
+
+# This is for Stripe details
 FREE_DELIVERY_LIMIT = 45
 STANDARD_DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = 'gbp'

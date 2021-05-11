@@ -5,11 +5,12 @@ from .models import Order
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ('Name', 'email', 'phone_number', 
-        'home_Address', 'home_Address_continued', 'postcode', 
-        'country', 'county',)
+        fields = (
+            'Name', 'email', 'phone_number',
+            'home_Address', 'home_Address_continued', 'postcode',
+            'country', 'county',
+            )
 
-    
     def _init_(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         placeholders = {

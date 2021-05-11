@@ -1,12 +1,16 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import (
+    render, redirect, reverse, HttpResponse
+)
 from django.contrib import messages
 
 from products.models import Product
 
 # Create your views here.
 
+
 def view_pack(request):
     return render(request, 'pack/pack.html')
+
 
 def put_to_pack(request, item_id):
 
@@ -32,7 +36,8 @@ def put_to_pack(request, item_id):
             pack[item_id] += quantity
         else:
             pack[item_id] = quantity
-            messages.success(request, f'Placed {product.name} to your pack. Now click on the price above to checkout or continue shopping.')
+            messages.success(request, f'Placed {product.name} to your pack. \
+            Now click on the price above to checkout or continue shopping.')
 
     request.session['pack'] = pack
     return redirect(redirect_url)
@@ -71,9 +76,9 @@ def delete_pack(request, item_id):
         pack = request.session.get('pack', {})
 
         if size:
-                del pack[item_id]['items_by_size'][size]
-                if not pack[item_id]['items_by_size']:
-                    pack.pop(item_id)
+            del pack[item_id]['items_by_size'][size]
+            if not pack[item_id]['items_by_size']:
+                pack.pop(item_id)
         else:
             pack.pop(item_id)
 

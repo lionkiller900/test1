@@ -3,6 +3,7 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
 
+
 def pack_contents(request):
 
     pack_items = []
@@ -21,7 +22,8 @@ def pack_contents(request):
         })
 
     if overall < settings.FREE_DELIVERY_LIMIT:
-        delivery = overall * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
+        delivery = overall * \
+            Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
         real_delivery_alpha = settings.FREE_DELIVERY_LIMIT - overall
     else:
         delivery = 0

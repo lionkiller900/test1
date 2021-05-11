@@ -9,16 +9,18 @@ from checkout.models import Order
 
 @login_required
 def profile(request):
-    
+
     profile = get_object_or_404(UserProfile, user=request.user)
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Your personal profile has successfully changed')
+            messages.success(request, 'Your personal profile \
+                                has successfully changed')
         else:
-            messages.error(request, 'There is a problem. Please make sure it is done properly')
+            messages.error(request, 'There is a problem. \
+                                Please make sure it is done properly')
     else:
         form = UserProfileForm(instance=profile)
     orders = profile.orders.all
@@ -31,6 +33,7 @@ def profile(request):
     }
 
     return render(request, template, context)
+
 
 def product_history(request, product_number):
     order = get_object_or_404(Order, product_number=product_number)

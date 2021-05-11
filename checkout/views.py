@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404, HttpResponse
+)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -12,6 +14,7 @@ from pack.contexts import pack_contents
 
 import stripe
 import json
+
 
 @require_POST
 def stripe_checkout_data(request):
@@ -29,6 +32,7 @@ def stripe_checkout_data(request):
             Please come back soon.')
         return HttpResponse(content=e, status=400)
 
+
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
@@ -43,7 +47,9 @@ def checkout(request):
             'county': request.POST['county'],
             'postcode': request.POST['postcode'],
             'home_Address': request.POST.get('home_Address', False),
-            'home_Address_continued': request.POST.get('home_Address_continued', False),
+            'home_Address_continued': request.POST.get(
+                'home_Address_continued', False
+                ),
             'country': request.POST['country'],
 
         }
@@ -75,15 +81,16 @@ def checkout(request):
                             )
                             order_line_item.save()
                 except Product.DoesNotExist:
-                    messages.error(request,(
-                        "This footware is not found in our storage. Get back to us soon.")
+                    messages.error(request, (
+                        "This footware is not found in our storage. \
+                                            Get back to us soon.")
                     )
                     order.delete()
                     return redirect(reverse('view_pack'))
-
-
             request.session['save_detail'] = 'save_detail' in request.POST
-            return redirect(reverse('purchase_success', args=[order.product_number]))
+            return redirect(
+                reverse('purchase_success', args=[order.product_number])
+                )
         else:
             print("Form not valid")
             messages.error(request, 'Carefully check! \
@@ -102,7 +109,7 @@ def checkout(request):
             amount=stripe_overall,
             currency=settings.STRIPE_CURRENCY,
         )
-        
+
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -110,7 +117,8 @@ def checkout(request):
                     'Name': profile.user.get_full_name(),
                     'phone_number': profile.default_phone_number,
                     'home_Address': profile.default_home_Address,
-                    'home_Address_continued': profile.default_home_Address_continued,
+                    'home_Address_continued':
+                        profile.default_home_Address_continued,
                     'county': profile.default_county,
                     'country': profile.default_country,
                 })
@@ -119,7 +127,7 @@ def checkout(request):
         else:
             print("Intent", intent)
             order_form = OrderForm()
-    
+
     if not stripe_public_key:
         messages.warning(request, 'your Stripe public key is not found. \
             Did forget to add it in the your environment settings?')
@@ -130,8 +138,8 @@ def checkout(request):
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
     }
-
     return render(request, template, context)
+
 
 def purchase_success(request, product_number):
     """
@@ -139,7 +147,7 @@ def purchase_success(request, product_number):
     """
     save_detail = request.session.get('save_detail')
     order = get_object_or_404(Order, product_number=product_number)
-    
+
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         # This puts the user's profile to the purchase order
@@ -155,12 +163,11 @@ def purchase_success(request, product_number):
                 'default_county': order.county,
                 'default_country': order.country,
             }
-            customer_profile_form = UserProfileForm(profile_account, instance=profile)
+            customer_profile_form = UserProfileForm(
+                profile_account, instance=profile
+                )
             if customer_profile_form.is_valid():
                 customer_profile_form.save()
-
-
-
     messages.success(request, f'Item Succesfully purchased! \
         This is your order number: {product_number}. An email confirming \
         your purchase will be sent to you on {order.email}.')
