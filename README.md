@@ -309,7 +309,11 @@ And then use
 
 - Then obtain the passcode from your gmail account and paste it into Heroku Config vars. 
 - Test the email functionality by signing up. 
-Please note that the email used must be the email created from gmail. (i.e my gmail created.)
+Please note that the email used must be the email created from gmail. (i.e my gmail created.). Also note
+that the phone details as well the ecommerceshoes@example.com email are dummy/test contact details; they are not created
+or real. 
+
+The only real contacts are the social media links in the footer section.
 
 <a name="social-media"></a>
 ## Social media
