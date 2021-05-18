@@ -1,0 +1,2 @@
+Postgres DB
+[{"model": "products.category", "pk": 1, "fields": {"name": "All Shoes", "friendly_name": "All Men's Shoes"}}, {"model": "products.category", "pk": 2, "fields": {"name": "Casual_shoes", "friendly_name": "Casual_shoes"}}, {"model": "products.category", "pk": 3, "fields": {"name": "Trainers", "friendly_name": "Trainers"}}

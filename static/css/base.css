@@ -121,18 +121,23 @@ body {
 
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
-        position: fixed;
+        /*position: fixed;*/
         z-index: 1030;
+        margin-top: 100px;
     }
 
     .header-container {
         padding-top: 90px;
     }
+
+    .offset-lg-2 {
+        margin-top: 100px;
+    }
 }
 
 @media (max-width: 991px) {
     .header-container {
-        padding-top: 93px;
+        padding-top: 100px;
     }
 
     body {
@@ -217,6 +222,7 @@ input[name='que']::placeholder {
 @media (min-width: 1200px) {
     .container {
         max-width: 80%;
+        margin-top: 60px;
     }
 }
 
@@ -251,7 +257,7 @@ a.cat-badge > span.badge:hover {
 }
 
 .mt-2, .my-2 {
-    margin-top: 5rem!important;
+    margin-top: 1rem!important;
 }
 
 /*footer*/
