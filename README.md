@@ -11,46 +11,46 @@ I treasure this project very much because of its challenging areas that are clos
 <a></a>
 
 # Table of contents 
-* [UX](#ux)
-    * [The objectives of the website](##user_goals)
-    * [User Stories](##user_stories)
-        * [As a user I want](###i-want)
-        * [As a user I want to](###i-want-to)
-    * [Necessities and expectations of the user](##needs-of-the-user)
-        * [Necessities](###necessities)
-        * [Expectations](###expectations)
-    * [How to use the site](##how-to-use-site)
-    * [Choice of design in the site](##choice-of-design)
-    * [Fonts](##fonts)
-    * [Structure of the site](##structure-of-site)
-* [Wireframes and Flowcharts](#wireframes-and-flowcharts)
-    * [Wireframes](##wireframes)
-    * [Flowcharts](##flowcharts)
-* [Features of the website](#features-of-the-website)
-    * [Features that are already implemented](##features-implemented)
-    * [Features that need to be created on the site](##features-needed)
-    * [Technologies used in this site](##technologies-used)
-        * [Software languages](###software-languages)
-        * [Libraries](###libraries)
-        * [Framework tools](###framework-tools)
-        * [External deployment tools](###external-development)
-        * [Flake8](###flake8)
-* [Testing](#testing)
-    * [Google Chrome DeVop](##google-chrome)
-    * [All Dev Emulated Devices](##emulated-devices)
-    * [Validating tools](##validating-tools)
-    * [Lighthouse](##lighthouse)
-* [BUGS IDENTIFIED](#bugs-identified)
-    * [Errors identified with Heroku push](##errors-identified)
-* [STRIPE and EMAIL](#stripe-email-social_media)
-    * [Setting up and using Stripe](##setting-up-stripe)
-    * [Email](##email)
-    * [Social media](##social-media)
-* [Deployment](#deployment)
-    * [Git deployment](#git-deployment)
-    * [These are the steps to clone the project](##ways-to-clone-project)
-    * [Further work on the requirements.txt](##further-work-requirements)
-* [Credits](#credits)
+* UX
+    * The objectives of the website
+    * User Stories
+        * As a user I want
+        * As a user I want to
+    * Necessities and expectations of the user
+        * Necessities
+        * Expectations
+    * How to use the site
+    * Choice of design in the site
+    * Fonts
+    * Structure of the site
+* Wireframes and Flowcharts
+    * Wireframes
+    * Flowcharts
+* Features of the website
+    * Features that are already implemented
+    * Features that need to be created on the site
+    * Technologies used in this site
+        * Software languages
+        * Libraries
+        * Framework tools
+        * External deployment tools
+        * Flake8
+* Testing
+    * Google Chrome DeVop
+    * All Dev Emulated Devices
+    * Validating tools
+    * Lighthouse
+* BUGS IDENTIFIED
+    * Errors identified with Heroku push
+* STRIPE and EMAIL
+    * Setting up and using Stripe
+    * Email
+    * Social media
+* Deployment
+    * Git deployment
+    * These are the steps to clone the project
+    * Further work on the requirements.txt
+* Credits
 
 --- 
 
@@ -66,6 +66,7 @@ I treasure this project very much because of its challenging areas that are clos
 - The products on the site must have their specific information
 - The site must have an access in a way that the products must be easily checked out and allow for more additional products in the products pack.
 - There must be an ability to sign in or sign up on the page where the user is able to view the accounts and details
+[Back to Top](#table-of-contents)
 
 <a name="user_stories"></a>
 ## User Stories
@@ -227,6 +228,8 @@ However there are some information that it will provide that do not need attenti
 For examplesuch as some useful variables that are needed in the codes which will signify that it is not useful. However if you remove these
 variables it can lead to certain errors. Other issues that it will prompt up that do not need attention are the migration files.
 
+[Back to Top](#table-of-contents)
+
 <a name="testing"></a>
 # Testing
 Using DeVop technologies can be browsed using these platforms:
@@ -254,6 +257,8 @@ One of them is the [validator](https://validator.w3.org/) which is used for HTML
 To use Lighthouse, since it is Chrome based, you can easily download the Chrome and make it as an extension to the page.
 The Lighthouse should be next to the searchbar. Go on the website and click on Lighthouse and get a result.
 
+[Back to Top](#table-of-contents)
+
 <a name="bugs-identified"></a>
 # BUGS IDENTIFIED
 
@@ -263,6 +268,8 @@ There were series of persistent errors encountered when trying to deploy to Hero
 Another error encountered here is when the DISABLE_COLLECTSTATIC and the HEROKU_HOSTNAME config vars in Heroku were removed while running manage.py collectstatic. AWS Secret and Access keys were then added which made the build-up push to Heroku successful. 
 Other problems encountered
 The most common and enduring problem is the background image not showing (# THIS NEEDS TO BE EXPANDED).
+
+[Back to Top](#table-of-contents)
 
 <a name="stripe-email-social_media"></a>
 # STRIPE, EMAIL and SOCIAL MEDIA
@@ -319,6 +326,7 @@ The only real contacts are the social media links in the footer section.
 ## Social media
 - The website social links are already created such as Facebook, Twitter, Instagram, and Telegram. All can be found on the footer. 
 
+[Back to Top](#table-of-contents)
 
 <a name="deploment"></a>
 # DEPLOYMENT
@@ -408,6 +416,7 @@ Alternatively you can you can deploy the app to Heroku through using:
 
 - Then it can be deployed in the Heroku account by going to the “Deploy” tab and then clicking “enable automatic deployment”.  Beneath it then the “Deploy branch” should be clicked which will build the app and can be viewed by just clicking the “Open app” at the top right. 
 
-<a name="credits"></a>
+[Back to Top](#table-of-contents)
+
 # CREDITS
 I want to especially thank majority of the Code Institute members including the tutors and my mentor for their vast amount of help despite my family difficulties I faced during much of the pandemic/COVID season. The season especially was a very difficult period not just for me but for a lot of people who have undertaken this project. Despite this it was a worthwhile of counter battle against such problems and victory was finally achieved. 
