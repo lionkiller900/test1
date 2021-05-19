@@ -13,10 +13,10 @@
 
 {% block content %}
 <div class="innerclap"></div>
-    <div class="container-fluid">
+    <div class="container-fluid wrapper">
         <div class="row">
             <div class="col text-center mt-3">
-                <h3 class="logo-font">Footwear</h3>
+                <h3 class="footwear-logo-font">Footwear</h3>
                 {% for cat in present_categories %}
                     <a class="cat-badge text-decoration-none" href="{% url 'products' %}?categories={{ cat.name }}">
                         <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ cat.friendly_name }}</span>
@@ -115,6 +115,7 @@
                 </div>
             </div>
         </div>
+        <div class="push"></div>
     </div>    
 {% include 'footer/footer.html' %}
 {% endblock %}
