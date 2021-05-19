@@ -323,7 +323,7 @@ a.cat-badge > span.badge:hover {
     justify-content: center;
     align-content: center;
     flex-direction: column;
-    background-color: #aef0c9c0;
+    background-color: rgb(233, 224, 224);
 }
 
 .footer-paragraph p {
