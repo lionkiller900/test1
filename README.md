@@ -54,7 +54,6 @@ I treasure this project very much because of its challenging areas that are clos
 * Credits
 
 --- 
-NOTE: WITH SEVERAL ATTEMPTS HERE ON HOW TO RECTIFY THIS SERVER ERROR, I WILL LIKE YOU TO PLEASE LOOK AT MY CODES INSTEAD AS I HAVE WORKED HARD ENOUGH FOR THIS PROJECT. I HAVE CONTACT SEVERAL TUTORS ON THIS ISSUE AND THEY HAVE RUN OUT OF IDEAS ON HOW TO SOLVE THIS PROBLEM AS THIS IS A STRANGE ERROR NEVER ENCOUNTERED BEFORE. EVEN STRANGER IS WHEN I TRIED SUBMITTING THE WORK JUST FEW MINUTES TO THE DEADLINE AND IT OCCURED SPONTANEOUSLY. FROM WHAT THEY ARE SAYING THERE IS NO ANSWER TO THIS PARTICULAR INCIDENT. THIS IS A CIRCUMSTANCES OUT OF MY CONTROL. IF YOU WANT ANY LOGIN DETAILS OR ANYTHING AT ALL PLEASE EEL FREE TO GET BACK TO ME!
 # UX
 
 ## The objectives of the website
@@ -237,7 +236,7 @@ There were series of persistent errors encountered when trying to deploy to Hero
 One of the most common errors encountered are that the python version (Python 3.6.8) installed into Git do not support the version for pushing into Heroku. The version is needed to be upgraded to Python 3.8.8 for the stack Heroku-20 allowing the push to be successfully built. This is in addition when the required packages for Django to be successful where installed and validated them on requirements.txt.<br>
 Another error encountered here is when the DISABLE_COLLECTSTATIC and the HEROKU_HOSTNAME config vars in Heroku were removed while running manage.py collectstatic. AWS Secret and Access keys were then added which made the build-up push to Heroku successful.<br>
 There was one enduring problem in that the background image is not showing due to the MEDIA_URL not included for the carousel slide, as it is Django in-built. (remember MEDIA_URL = '/media/' ).<br>
-Perherps the strangest error ever occured was with the 500 server Programme Error. This is because all the migrated files are corrupted unusually and unexplanably. Maybe in the future such explanation will be expanded. However to handle such problem will be to:
+Perherps the strangest error ever occured was with the 500 server Programme Error. Initially, it was though that this is because all the migrated files are corrupted. Then it was suggested that to handle this issue will be to:
 
 - Remove all the migrated files and pycache files except the __init__.py files (they are empty anyways).
 Then run
@@ -247,6 +246,9 @@ Then run
 and
 -      python manage.py showmigrations
 to check for the migrated files.
+However this was not the case as it is now found that the migrated contained the sqlite3 file somehow and strangly in an unexpected way, after series of investigations. Moreover this means that Heroku is reverting the changes made previously. The only solution done to the problem was:
+- go to the Heroku account page
+- Go to resources page and destroy the production database and get a new URL using the same website name.
 
 ## Flake8
 Flake8 is a very useful tool in making your python codes tidy. 
