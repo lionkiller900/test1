@@ -111,6 +111,12 @@ I treasure this project very much because of its challenging areas that are clos
 - After filling in the details to finalise the purchase it will produce a checkout confirmation.
 - Check your email for confirmation.
 
+Here is the screenshots of how purchasing a product is like:
+<a href="">
+        <img src="/wireframes/shoecheckout1.png" alt="Webhooks successful">
+    </a>
+
+
 ## Choice of design in the site
 The background of the website on the Home Page is made of with 3 carousels with different image backgrounds. This gives the background a good appeal in how users view the shoe website. The background image is gotten from Google Images.<br>
 The colours used in other pages are used to design some pages on the sites:
