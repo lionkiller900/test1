@@ -114,7 +114,22 @@ I treasure this project very much because of its challenging areas that are clos
 Here is the screenshots of how purchasing a product is like:
 <a href="">
         <img src="/wireframes/shoecheckout1.png" alt="Webhooks successful">
-    </a>
+</a>
+<a href="">
+        <img src="/wireframes/shoecheckout2.png" alt="Webhooks successful">
+</a>
+<a href="">
+        <img src="/wireframes/shoecheckout3.png" alt="Webhooks successful">
+</a>
+<a href="">
+        <img src="/wireframes/shoecheckout4a.png" alt="Webhooks successful">
+</a>
+<a href="">
+        <img src="/wireframes/shoecheckout4b.png" alt="Webhooks successful">
+</a>
+<a href="">
+        <img src="/wireframes/shoecheckout5.png" alt="Webhooks successful">
+</a>
 
 
 ## Choice of design in the site
