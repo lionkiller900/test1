@@ -3,6 +3,8 @@ Hello everyone! This is E-commerce shoes that sell most shoes ranging from train
 This project is my final one that will complete the Full Stack Software Developing Course in Code Institute. 
 I treasure this project very much because of its challenging areas that are close to my heart. This is because I am fascinated with several kinds of shoes especially trainers that are new and “shiny” as I call it. This is something most Black British young men do like. Back in my younger days I would take old and worn-out trainers from the streets or waste and patch them into a useful foot ware. This is one of my ways of loving trainers. As technology is becoming part of our daily life, I developed the idea of making online shoe business that can be very appealing to customers. So therefore I developed the Ecommerce Shoe website.
 
+IMPORTANT NOTE: the debug is now off!
+
 # Website
 [Visit the website](https://ecommerce-shoes-website.herokuapp.com/)
 
