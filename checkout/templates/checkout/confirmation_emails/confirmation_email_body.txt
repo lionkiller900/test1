@@ -15,7 +15,7 @@ Your item(s) will be delivered to:
 {{ order.country }},
 {{ order.postcode }}
 
-For further enquires please contact us on {{ contact_email }}
+For further enquires please contact us on {{ contact_email }} or ecommerceshoes@example.com
 
 Thank you and enjoy your item,
 
