@@ -1,6 +1,6 @@
 Hi {{ order.Name}}
 
-This is to confirm that your purchase order has gone through. Your phone details is confirmed as {{ order.product_number }}. The details are below:
+This is to confirm that your purchase order has gone through. Your phone details is confirmed as {{ order.phone_number }}. The details are below:
 
 Product Number: {{ order.product_number }}
 Date of purchase: {{ order.date }}
