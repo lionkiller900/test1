@@ -222,17 +222,20 @@ Using DeVop technologies can be browsed using these platforms:
 
 Here is the screenshots of some of the examples of devices:
 
-Laptop screenshot
+- Laptop screenshot:
+
 <a href="">
         <img src="/wireframes/ecommerce-shoes-website.herokuapp.com_ laptop.png" alt="Webhooks successful">
 </a>
 
-Tablet device
+- Tablet device:
+
 <a href="">
         <img src="/wireframes/ecommerce-shoes-website.herokuapp.com_(iPad).png" alt="Webhooks successful">
 </a>
 
-Mobile device
+- Mobile device:
+
 <a href="">
         <img src="/wireframes/ecommerce-shoes-website.herokuapp.com_(iPhone 5_SE).png" alt="Webhooks successful">
 </a>
