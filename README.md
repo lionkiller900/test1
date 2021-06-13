@@ -113,27 +113,6 @@ IMPORTANT NOTE: the debug is now off!
 - After filling in the details to finalise the purchase it will produce a checkout confirmation.
 - Check your email for confirmation.
 
-Here is the screenshots of how purchasing a product is like:
-<a href="">
-        <img src="/wireframes/shoecheckout1.png" alt="Webhooks successful">
-</a>
-<a href="">
-        <img src="/wireframes/shoecheckout2.png" alt="Webhooks successful">
-</a>
-<a href="">
-        <img src="/wireframes/shoecheckout3.png" alt="Webhooks successful">
-</a>
-<a href="">
-        <img src="/wireframes/shoecheckout4a.png" alt="Webhooks successful">
-</a>
-<a href="">
-        <img src="/wireframes/shoecheckout4b.png" alt="Webhooks successful">
-</a>
-<a href="">
-        <img src="/wireframes/shoecheckout5.png" alt="Webhooks successful">
-</a>
-
-
 ## Choice of design in the site
 The background of the website on the Home Page is made of with 3 carousels with different image backgrounds. This gives the background a good appeal in how users view the shoe website. The background image is gotten from Google Images.<br>
 The colours used in other pages are used to design some pages on the sites:
@@ -240,6 +219,23 @@ Using DeVop technologies can be browsed using these platforms:
 - All Nexus series
 - All Pixel series
 - All IPad series
+
+Here is the screenshots of some of the examples of devices:
+
+Laptop screenshot
+<a href="">
+        <img src="/wireframes/ecommerce-shoes-website.herokuapp.com_ laptop.png" alt="Webhooks successful">
+</a>
+
+Tablet device
+<a href="">
+        <img src="/wireframes/ecommerce-shoes-website.herokuapp.com_(iPad).png" alt="Webhooks successful">
+</a>
+
+Mobile device
+<a href="">
+        <img src="/wireframes/ecommerce-shoes-website.herokuapp.com_(iPhone 5_SE).png" alt="Webhooks successful">
+</a>
 
 ## Validating tools
 There were validating tools used to validate the CSS/HTML codes to verify for errors.
